@@ -1,6 +1,8 @@
+import ListProduct from "../Components/ListProduct/ListProduct"
+
 const Productpage = () => {
   return (
-    <div>Productpage</div>
+    <ListProduct/>
   )
 }
 

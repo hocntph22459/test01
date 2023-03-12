@@ -1,39 +1,55 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-
+import React, { useState } from "react";
 const Navbar = () => {
-  const [data,setdata] = useState([])
+const [data,setdata] = useState(false);
+ const fuonclick = ()=>{
+    setdata(!data)
+  }
 
-  useEffect(()=>{
-    axios.get('http://localhost:3000/Navbar')
-    .then(({data})=>setdata(data))
-  },[])
   return (
-    <nav className="  bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-  <div className="container flex flex-wrap items-center justify-between mx-auto">
-    <a href="https://flowbite.com/" className="flex items-center">
-      <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
-      <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-    </a>
-    <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-      <span className="sr-only">Open main menu</span>
-      <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" /></svg>
-    </button>
-    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            {data.map(nav=>{
-              return (
-              <li>
-              <a href="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">{nav.name}</a>
-            </li>
-              )
-        }).join("")}
-      </ul>
-    </div>
-  </div>
-  </nav>
+    <header className="text-gray-700 body-font border-b border-gray-200">
+          <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a
+              className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+              href="https://tailblocks.cc"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+              <span className="ml-3 text-xl">TAILBLOCKS</span>
+            </a>
+            <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+              <a className="mr-5 hover:text-gray-900">First Link</a>
+              <a className="mr-5 hover:text-gray-900">Second Link</a>
+              <a className="mr-5 hover:text-gray-900">Third Link</a>
+              <a className="mr-5 hover:text-gray-900">Fourth Link</a>
+            </nav>
+            <button onClick={fuonclick} className="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
+              Button {data ? 'on' : 'off'}
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                className="w-4 h-4 ml-1"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </header>
+  );
+};
 
-  )
-}
-
-export default Navbar
+export default Navbar;

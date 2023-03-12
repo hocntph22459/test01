@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-// import reportWebVitals from "./reportWebVitals";
 import { router } from "./Libs";
 import Homepage from "./Pages/Homepage";
 import Productpage from "./Pages/Productpage";
 import Notfoundpage from "./Pages/Notfoundpage";
+import AddProduct from "./Components/AddProduct";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,7 +19,14 @@ router.on('/product',()=>{
   <Productpage/>
 )
 })
-
+router.on('/add/product',()=>{
+  root.render(
+    <div className="container">
+      <AddProduct/>
+    </div>
+  
+)
+})
 router.notFound(()=>{
   root.render(
     <Notfoundpage/>
